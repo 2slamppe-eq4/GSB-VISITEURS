@@ -26,15 +26,16 @@ public class CtrlVisiteur extends CtrlAbstrait {
 
    
 
-    
-
-    /**
-     * presenceAnnuler réaction au clic sur le bouton ANNULER de la vue Le
-     * contrôle est rendu au contrôleur frontal
-     */
-    public void visiteurQuitter() {
-        this.getCtrlPrincipal().action(EnumAction.VISITEUR_QUITTER);
+    public void fichierQuitter() {
+        // Confirmer avant de quitter
+        int rep = JOptionPane.showConfirmDialog(getVue(), "Quitter l'application\nEtes-vous sûr(e) ?", "Ambulances", JOptionPane.YES_NO_OPTION, JOptionPane.QUESTION_MESSAGE);
+        if (rep == JOptionPane.YES_OPTION) {
+            // mettre fin à l'application
+            this.getCtrlPrincipal().action(EnumAction.MENU_VISITEUR_QUITTER);
+        }
     }
+
+
 
 
    
@@ -43,6 +44,10 @@ public class CtrlVisiteur extends CtrlAbstrait {
     @Override
     public VueVisiteur getVue() {
         return (VueVisiteur) vue;
+    }
+
+    public void visiteurAfficher() {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
     
 }

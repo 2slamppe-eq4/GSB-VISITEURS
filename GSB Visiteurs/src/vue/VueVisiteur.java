@@ -2,6 +2,7 @@ package vue;
 
 import controleur.CtrlAbstrait;
 import controleur.CtrlMenu;
+import controleur.CtrlVisiteur;
 
 /**
  * fenêtre VueMenu
@@ -94,15 +95,15 @@ public class VueVisiteur extends VueAbstraite {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jMenuItemQuitterActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItemQuitterActionPerformed
-        ((CtrlMenu)controleur).fichierQuitter();
+        ((CtrlVisiteur)controleur).fichierQuitter();
     }//GEN-LAST:event_jMenuItemQuitterActionPerformed
 
     private void jMenuItemVisiteurAfficherActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItemVisiteurAfficherActionPerformed
-        ((CtrlMenu)controleur).visiteurAfficher();
+        ((CtrlVisiteur)controleur).visiteurAfficher();
     }//GEN-LAST:event_jMenuItemVisiteurAfficherActionPerformed
 
     private void formWindowClosing(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowClosing
-        ((CtrlMenu)controleur).fichierQuitter();
+        ((CtrlVisiteur)controleur).fichierQuitter();
     }//GEN-LAST:event_formWindowClosing
 
 //    /**
