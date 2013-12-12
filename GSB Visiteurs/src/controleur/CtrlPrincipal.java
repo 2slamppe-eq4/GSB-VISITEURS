@@ -79,4 +79,6 @@ public class CtrlPrincipal {
         ctrlMenu.getVue().setEnabled(true);
         ctrlMenu.getVue().setVisible(true);
     }
+    
+ 
 }

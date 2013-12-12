@@ -33,7 +33,7 @@ public class CtrlMenu extends CtrlAbstrait {
      * clic sur la commande Ajouter du menu presence Le contrôleur délègue
      * l'action au contrôleur frontal
      */
-    public void presenceAjouter() {
+    public void visiteurAfficher() {
         this.getCtrlPrincipal().action(EnumAction.MENU_VISITEUR_AFFICHER);
     }
 

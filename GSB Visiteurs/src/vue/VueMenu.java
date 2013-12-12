@@ -101,7 +101,7 @@ public class VueMenu extends VueAbstraite {
     }//GEN-LAST:event_jMenuItemQuitterActionPerformed
 
     private void jMenuItemVisiteurAfficherActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItemVisiteurAfficherActionPerformed
-        ((CtrlMenu)controleur).presenceAjouter();
+        ((CtrlMenu)controleur).visiteurAfficher();
     }//GEN-LAST:event_jMenuItemVisiteurAfficherActionPerformed
 
     private void formWindowClosing(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowClosing
