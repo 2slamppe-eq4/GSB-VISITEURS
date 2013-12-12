@@ -46,8 +46,36 @@ public class CtrlVisiteur extends CtrlAbstrait {
         return (VueVisiteur) vue;
     }
 
-    public void visiteurAfficher() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
     
+    
+    
+    public void visiteurAfficher() {
+        String msg = ""; // message à afficher en cas d'erreur
+        // récupérer les valeurs saisies
+        if (getVue() != null) {
+            Equipier equipierSelect = (Equipier) getVue().getjComboBoxEquipier().getSelectedItem();
+            Date dateSaisie = getVue().getjDateChooserDatePresence().getDate();
+            if (equipierSelect != null || dateSaisie != null) {
+                Jour dateSelect = new Jour(dateSaisie.getTime());
+                try {
+                    // n° d'identification de cet équipier
+                    int id = equipierSelect.getId();
+                    // récupérer la liste des présences actuelles pour cet équipier
+                    equipierSelect.setLesPresences(daoPresence.getListePresences(id));
+                    // rechercher la date saisie dans cette liste
+                    Presence presenceRecherchee = equipierSelect.rechercherUnePresence(dateSelect);
+                    if (presenceRecherchee != null) {
+                        // si elle est déjà présente, mettre à jour la vue
+                        // code état concerné
+                        CodeEtat ce = presenceRecherchee.getEtatPresence();
+                        this.getVue().getModeleJComboBoxEtatPresence().setSelectedItem(ce);
+//                        System.out.println("état : " + ce.toString());
+                    }
+                } catch (DaoException ex) {
+                    msg = "CtrlPresence - presenceAfficher() - " + ex.getMessage();
+                    JOptionPane.showMessageDialog(vue, msg, "Saisie des présences", JOptionPane.ERROR_MESSAGE);
+                }
+            }
+        }
+    }
 }

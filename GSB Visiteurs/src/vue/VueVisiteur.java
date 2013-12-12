@@ -31,6 +31,8 @@ public class VueVisiteur extends VueAbstraite {
     private void initComponents() {
 
         jLabel2 = new javax.swing.JLabel();
+        jScrollPane1 = new javax.swing.JScrollPane();
+        tableau = new javax.swing.JTable();
         jMenuBar1 = new javax.swing.JMenuBar();
         jMenuFichier = new javax.swing.JMenu();
         jMenuItemQuitter = new javax.swing.JMenuItem();
@@ -45,7 +47,28 @@ public class VueVisiteur extends VueAbstraite {
             }
         });
 
-        jLabel2.setText("jLabel2");
+        jLabel2.setText("Liste des visiteurs :");
+
+        tableau.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null}
+            },
+            new String [] {
+                "Nom", "Prénom", "Adresse", "Téléphone"
+            }
+        ) {
+            Class[] types = new Class [] {
+                java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class
+            };
+
+            public Class getColumnClass(int columnIndex) {
+                return types [columnIndex];
+            }
+        });
+        jScrollPane1.setViewportView(tableau);
 
         jMenuFichier.setText("Accueil");
 
@@ -79,16 +102,22 @@ public class VueVisiteur extends VueAbstraite {
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(161, 161, 161)
-                .addComponent(jLabel2)
-                .addContainerGap(190, Short.MAX_VALUE))
+                .addContainerGap()
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(jLabel2)
+                        .addGap(0, 0, Short.MAX_VALUE))
+                    .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 679, Short.MAX_VALUE))
+                .addContainerGap())
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(94, 94, 94)
+                .addGap(18, 18, 18)
                 .addComponent(jLabel2)
-                .addContainerGap(197, Short.MAX_VALUE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 374, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(18, Short.MAX_VALUE))
         );
 
         pack();
@@ -147,5 +176,7 @@ public class VueVisiteur extends VueAbstraite {
     private javax.swing.JMenuItem jMenuItemPresenceAJouter;
     private javax.swing.JMenuItem jMenuItemQuitter;
     private javax.swing.JMenu jMenuPresence;
+    private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JTable tableau;
     // End of variables declaration//GEN-END:variables
 }
