@@ -46,18 +46,18 @@ public class CtrlVisiteur extends CtrlAbstrait {
         
                 int i=0;
                 for(Visiteurs unVisiteur: lesVisiteurs){
-                    ((DefaultTableModel)VueVisiteur.getTableau().getModel()).setRowCount(i+1);//modification des ligne tu tableau en fonction du nombre de ligne à entré
+                    ((DefaultTableModel)((VueVisiteur)vue).getTableau().getModel()).setRowCount(i+1);//modification des ligne tu tableau en fonction du nombre de ligne à entré
                     String nom= unVisiteur.getNom();// récupération des donnée a metre dans le tablau
                     String prenom=unVisiteur.getPrenom();// récupération des donnée a metre dans le tablau
                     int cp=unVisiteur.getCp();// récupération des donnée a metre dans le tablau
                     String ville=unVisiteur.getVille();// récupération des donnée a metre dans le tablau
                     String telephone=unVisiteur.getDate_embauche();// récupération des donnée a metre dans le tablau
-                    
-                    VueVisiteur.getTableau().setValueAt(nom,i,0); //Insertion dasn le tableau 
-                    VueVisiteur.getTableau().setValueAt(prenom,i,1);//Insertion dasn le tableau
-                    VueVisiteur.getTableau().setValueAt(cp,i,2);//Insertion dasn le tableau
-                    VueVisiteur.getTableau().setValueAt(ville,i,3);//Insertion dasn le tableau
-                    VueVisiteur.getTableau().setValueAt(telephone,i,1);//Insertion dasn le tableau
+                    DefaultTableModel tableau = (DefaultTableModel) ((VueVisiteur)vue).getTableau().getModel();
+                    tableau.setValueAt(nom,i,0); //Insertion dasn le tableau 
+                    tableau.setValueAt(prenom,i,1);//Insertion dasn le tableau
+                    tableau.setValueAt(cp,i,2);//Insertion dasn le tableau
+                    tableau.setValueAt(ville,i,3);//Insertion dasn le tableau
+                    tableau.setValueAt(telephone,i,1);//Insertion dasn le tableau
                     
                     i++;
                 }

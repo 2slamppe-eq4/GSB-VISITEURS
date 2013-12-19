@@ -21,16 +21,19 @@ public class VueVisiteur extends VueAbstraite {
 
     
     JTable mtableauVisiteur;
+    javax.swing.table.DefaultTableModel modeleJtableVisiteur;
+    
+    
     /**
      * Creates new form VueMenu
      */
     public VueVisiteur(CtrlAbstrait ctrl) {
         super(ctrl);
         initComponents();
-        
         //this.setLocation(500, 200);
-        mtableauVisiteur = new JTable();
-        tableau.setModel((TableModel) mtableauVisiteur);
+       
+         modeleJtableVisiteur =new javax.swing.table.DefaultTableModel();
+        jTable1.setModel(modeleJtableVisiteur);
     }
 
     public JTable getMtableauVisiteur() {
@@ -89,13 +92,7 @@ public class VueVisiteur extends VueAbstraite {
         this.jMenuPresence = jMenuPresence;
     }
 
-    public JScrollPane getjScrollPane1() {
-        return jScrollPane1;
-    }
 
-    public void setjScrollPane1(JScrollPane jScrollPane1) {
-        this.jScrollPane1 = jScrollPane1;
-    }
 
     public JTable getTableau() {
         return jTable1;
