@@ -1,6 +1,7 @@
 package modele.dao;
 
 import java.sql.*;
+import java.util.ArrayList;
 import java.util.Collection;
 import java.util.List;
 import modele.jdbc.Jdbc;
@@ -10,19 +11,24 @@ import modele.metier.ListeVisiteurs;
 import modele.metier.Visiteurs;
 
 
+//La classe DaoVisiteur :
+//On crée une liste visiteurs
+//Ensuite on éxecute la requete 
+//Puis on met les résultats de la requête dans la liste
+
 public class DaoVisiteur {
-    
-    
-        public ListeVisiteurs getListePresences(Integer VIS_MATRICULE) throws DaoException {
-        ListeVisiteurs result = new ListeVisiteurs();
+        
+
+        public ArrayList<Visiteurs> getListeVisiteurs() throws DaoException {
+        ArrayList<Visiteurs> result = new ArrayList<Visiteurs>();
+
         String requete = "SELECT * FROM VISITEURS ";
         try {
             PreparedStatement ps = Jdbc.getInstance().getConnexion().prepareStatement(requete);
-            ps.setInt(1, VIS_MATRICULE);
             ResultSet rs = ps.executeQuery();
             while (rs.next()) {
                 Visiteurs visiteur = chargerUnVisiteur(rs);
-                
+                result.add(visiteur);
             }
 
         } catch (Exception ex) {
@@ -30,6 +36,7 @@ public class DaoVisiteur {
         }
         return result;
         }
+        
         
         
         

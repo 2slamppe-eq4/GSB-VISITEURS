@@ -3,6 +3,13 @@ package vue;
 import controleur.CtrlAbstrait;
 import controleur.CtrlMenu;
 import controleur.CtrlVisiteur;
+import javax.swing.JLabel;
+import javax.swing.JMenu;
+import javax.swing.JMenuBar;
+import javax.swing.JMenuItem;
+import javax.swing.JScrollPane;
+import javax.swing.JTable;
+import javax.swing.table.TableModel;
 
 /**
  * fenêtre VueMenu
@@ -12,14 +19,101 @@ import controleur.CtrlVisiteur;
 
 public class VueVisiteur extends VueAbstraite {
 
+    
+    JTable mtableauVisiteur;
     /**
      * Creates new form VueMenu
      */
     public VueVisiteur(CtrlAbstrait ctrl) {
         super(ctrl);
         initComponents();
-        this.setLocation(500, 200);
+        
+        //this.setLocation(500, 200);
+        mtableauVisiteur = new JTable();
+        tableau.setModel((TableModel) mtableauVisiteur);
     }
+
+    public JTable getMtableauVisiteur() {
+        return mtableauVisiteur;
+    }
+
+    public void setMtableauVisiteur(JTable mtableauVisiteur) {
+        this.mtableauVisiteur = mtableauVisiteur;
+    }
+
+    public JLabel getjLabel2() {
+        return jLabel2;
+    }
+
+    public void setjLabel2(JLabel jLabel2) {
+        this.jLabel2 = jLabel2;
+    }
+
+    public JMenuBar getjMenuBar1() {
+        return jMenuBar1;
+    }
+
+    public void setjMenuBar1(JMenuBar jMenuBar1) {
+        this.jMenuBar1 = jMenuBar1;
+    }
+
+    public JMenu getjMenuFichier() {
+        return jMenuFichier;
+    }
+
+    public void setjMenuFichier(JMenu jMenuFichier) {
+        this.jMenuFichier = jMenuFichier;
+    }
+
+    public JMenuItem getjMenuItemPresenceAJouter() {
+        return jMenuItemPresenceAJouter;
+    }
+
+    public void setjMenuItemPresenceAJouter(JMenuItem jMenuItemPresenceAJouter) {
+        this.jMenuItemPresenceAJouter = jMenuItemPresenceAJouter;
+    }
+
+    public JMenuItem getjMenuItemQuitter() {
+        return jMenuItemQuitter;
+    }
+
+    public void setjMenuItemQuitter(JMenuItem jMenuItemQuitter) {
+        this.jMenuItemQuitter = jMenuItemQuitter;
+    }
+
+    public JMenu getjMenuPresence() {
+        return jMenuPresence;
+    }
+
+    public void setjMenuPresence(JMenu jMenuPresence) {
+        this.jMenuPresence = jMenuPresence;
+    }
+
+    public JScrollPane getjScrollPane1() {
+        return jScrollPane1;
+    }
+
+    public void setjScrollPane1(JScrollPane jScrollPane1) {
+        this.jScrollPane1 = jScrollPane1;
+    }
+
+    public JTable getTableau() {
+        return jTable1;
+    }
+
+    public void setTableau(JTable tableau) {
+        this.jTable1 = tableau;
+    }
+
+    public CtrlAbstrait getControleur() {
+        return controleur;
+    }
+
+    public void setControleur(CtrlAbstrait controleur) {
+        this.controleur = controleur;
+    }
+    
+    
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -31,8 +125,8 @@ public class VueVisiteur extends VueAbstraite {
     private void initComponents() {
 
         jLabel2 = new javax.swing.JLabel();
-        jScrollPane1 = new javax.swing.JScrollPane();
-        tableau = new javax.swing.JTable();
+        jScrollPane2 = new javax.swing.JScrollPane();
+        jTable1 = new javax.swing.JTable();
         jMenuBar1 = new javax.swing.JMenuBar();
         jMenuFichier = new javax.swing.JMenu();
         jMenuItemQuitter = new javax.swing.JMenuItem();
@@ -49,26 +143,26 @@ public class VueVisiteur extends VueAbstraite {
 
         jLabel2.setText("Liste des visiteurs :");
 
-        tableau.setModel(new javax.swing.table.DefaultTableModel(
+        jTable1.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null}
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null}
             },
             new String [] {
-                "Nom", "Prénom", "Adresse", "Téléphone"
+                "Nom", "Prenom", "CP", "Ville", "Date"
             }
         ) {
             Class[] types = new Class [] {
-                java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class
+                java.lang.String.class, java.lang.String.class, java.lang.Integer.class, java.lang.String.class, java.lang.String.class
             };
 
             public Class getColumnClass(int columnIndex) {
                 return types [columnIndex];
             }
         });
-        jScrollPane1.setViewportView(tableau);
+        jScrollPane2.setViewportView(jTable1);
 
         jMenuFichier.setText("Accueil");
 
@@ -107,7 +201,7 @@ public class VueVisiteur extends VueAbstraite {
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(jLabel2)
                         .addGap(0, 0, Short.MAX_VALUE))
-                    .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 679, Short.MAX_VALUE))
+                    .addComponent(jScrollPane2, javax.swing.GroupLayout.DEFAULT_SIZE, 813, Short.MAX_VALUE))
                 .addContainerGap())
         );
         layout.setVerticalGroup(
@@ -115,9 +209,9 @@ public class VueVisiteur extends VueAbstraite {
             .addGroup(layout.createSequentialGroup()
                 .addGap(18, 18, 18)
                 .addComponent(jLabel2)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 374, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(18, Short.MAX_VALUE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         pack();
@@ -176,7 +270,7 @@ public class VueVisiteur extends VueAbstraite {
     private javax.swing.JMenuItem jMenuItemPresenceAJouter;
     private javax.swing.JMenuItem jMenuItemQuitter;
     private javax.swing.JMenu jMenuPresence;
-    private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JTable tableau;
+    private javax.swing.JScrollPane jScrollPane2;
+    private javax.swing.JTable jTable1;
     // End of variables declaration//GEN-END:variables
 }
